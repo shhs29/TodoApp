@@ -7,7 +7,7 @@
   <header class="header">
     <h1>Todos</h1>
     <input class="new-todo" placeholder="Enter a task" [(ngModel)]="newTodo.title">
-    <button [disabled]="newTodo.title.length===0" (click)="addTask()">Add task</button>
+    <button [disabled]="isInvalid()" (click)="addTodo()">Add task</button>
   </header>
   <section class="main" *ngIf="todos">
     <ul class="todo-list">
@@ -15,13 +15,14 @@
         <div class="view">
           <input class="toggle" type="checkbox" (click)="changeStatus(todo)" [checked]="todo.isCompleted">
           <label>{{todo.title}}</label>
-          <button class="destroy" (click)="deleteTodo(todo)">Delete</button>
+          <button (click)="deleteTodo(todo)">Delete</button>
         </div>
       </div>
     </ul>
   </section>
-  <!--<footer class="footer" *ngIf="todos.length > 0">-->
-  <!--<span class="todo-count"><strong>{{todos.length}}</strong> {{todos.length == 1 ? 'item' : 'items'}} left</span>-->
-  <!--</footer>-->
+  <div>
+    <span
+      class="todo-count"><strong>{{getPendingTodos()}}</strong> Pending {{todos.length == 1 ? 'item' : 'items'}}</span>
+  </div>
 </section>
 

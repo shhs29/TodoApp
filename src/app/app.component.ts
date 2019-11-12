@@ -15,7 +15,11 @@ export class AppComponent {
   constructor() {
   }
 
-  addTask() {
+  isInvalid() {
+    return this.newTodo.title.length === 0;
+  }
+
+  addTodo() {
     if (!this.newTodo.id) {
       this.newTodo.id = ++this.lastId;
     }
@@ -37,13 +41,18 @@ export class AppComponent {
   }
 
   changeStatus(todo: Todo) {
-    let todo = this.getTodoById(todo.id);
+    todo = this.getTodoById(todo.id);
     todo.isCompleted = !todo.isCompleted;
     this.reorderTodos();
+    return todo;
   }
 
   deleteTodo(todoToBeRemoved: Todo) {
     this.todos = this.todos.filter(todo => todo.id != todoToBeRemoved.id);
+  }
+
+  getPendingTodos() {
+    return this.todos.filter(todo => todo.isCompleted === false).length;
   }
 
 }
