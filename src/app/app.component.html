@@ -1,9 +1,9 @@
-<div style="text-align:center">
+<div class="title-container">
   <h1>
     Welcome to {{ title }}!
   </h1>
 </div>
-<section class="todoapp">
+<section class="todo-app">
   <header class="header">
     <h1>Todo List 1</h1>
     <input class="new-todo" placeholder="Enter a task" [(ngModel)]="newTodo.title">
@@ -14,7 +14,9 @@
       <div *ngFor="let todo of todos">
         <div class="view">
           <input class="toggle" type="checkbox" (click)="changeStatus(todo)" [checked]="todo.isCompleted">
-          <label>{{todo.title}}</label>
+          <div class="todo-label">
+            <label>{{todo.title}}</label>
+          </div>
           <button (click)="deleteTodo(todo)">Delete</button>
         </div>
       </div>
