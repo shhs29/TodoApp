@@ -32,8 +32,8 @@ describe('AppComponent', () => {
   it('should add todo', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const component = fixture.componentInstance;
-    let todo1 = new Todo({id: 1, title: 'Task 1', isCompleted: false});
-    let todo2 = new Todo({id: 2, title: 'Task 2', isCompleted: false});
+    const todo1 = new Todo({id: 1, title: 'Task 1', isCompleted: false});
+    const todo2 = new Todo({id: 2, title: 'Task 2', isCompleted: false});
     component.newTodo = todo1;
     component.addTodo();
     component.newTodo = todo2;
@@ -46,8 +46,8 @@ describe('AppComponent', () => {
        it('should remove todo with the corresponding id', () => {
          const fixture = TestBed.createComponent(AppComponent);
          const component = fixture.componentInstance;
-         let todo1 = new Todo({id: 1, title: 'Task 1', isCompleted: false});
-         let todo2 = new Todo({id: 2, title: 'Task 2', isCompleted: false});
+         const todo1 = new Todo({id: 1, title: 'Task 1', isCompleted: false});
+         const todo2 = new Todo({id: 2, title: 'Task 2', isCompleted: false});
          component.todos = [todo1, todo2];
          fixture.detectChanges();
          component.deleteTodo(todo1);
@@ -57,9 +57,9 @@ describe('AppComponent', () => {
        it('should not removing anything if todo with corresponding id is not found', () => {
          const fixture = TestBed.createComponent(AppComponent);
          const component = fixture.componentInstance;
-         let todo1 = new Todo({id: 1, title: 'Task 1', isCompleted: false});
-         let todo2 = new Todo({id: 2, title: 'Task 2', isCompleted: false});
-         let todo3 = new Todo({id: 3, title: 'Task 3', isCompleted: false});
+         const todo1 = new Todo({id: 1, title: 'Task 1', isCompleted: false});
+         const todo2 = new Todo({id: 2, title: 'Task 2', isCompleted: false});
+         const todo3 = new Todo({id: 3, title: 'Task 3', isCompleted: false});
          component.todos = [todo1, todo2];
          fixture.detectChanges();
          component.deleteTodo(todo3);
@@ -73,11 +73,11 @@ describe('AppComponent', () => {
        it('should set the todo to completed if currently pending and reorder', () => {
          const fixture = TestBed.createComponent(AppComponent);
          const component = fixture.componentInstance;
-         let todo1 = new Todo({id: 1, title: 'Task 1', isCompleted: false});
-         let todo2 = new Todo({id: 2, title: 'Task 2', isCompleted: false});
+         const todo1 = new Todo({id: 1, title: 'Task 1', isCompleted: false});
+         const todo2 = new Todo({id: 2, title: 'Task 2', isCompleted: false});
          component.todos = [todo1, todo2];
          fixture.detectChanges();
-         let updatedTodo = component.changeStatus(todo1);
+         const updatedTodo = component.changeStatus(todo1);
          expect(updatedTodo.isCompleted).toEqual(true);
          expect(component.todos).toEqual([todo2, todo1]);
        });
@@ -85,11 +85,11 @@ describe('AppComponent', () => {
         it('should set the todo to pending if currently completed and reorder', () => {
           const fixture = TestBed.createComponent(AppComponent);
           const component = fixture.componentInstance;
-          let todo1 = new Todo({id: 1, title: 'Task 1', isCompleted: true});
-          let todo2 = new Todo({id: 2, title: 'Task 2', isCompleted: true});
+          const todo1 = new Todo({id: 1, title: 'Task 1', isCompleted: true});
+          const todo2 = new Todo({id: 2, title: 'Task 2', isCompleted: true});
           component.todos = [todo1, todo2];
           fixture.detectChanges();
-          let updatedTodo = component.changeStatus(todo2);
+          const updatedTodo = component.changeStatus(todo2);
           expect(updatedTodo.isCompleted).toEqual(false);
           expect(component.todos).toEqual([todo2, todo1]);
         });

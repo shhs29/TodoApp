@@ -9,7 +9,7 @@ import { Todo } from './todo';
 export class AppComponent {
   title = 'TODO app';
   newTodo: Todo = new Todo();
-  lastId: number = 0;
+  lastId = 0;
   todos: Todo[] = [];
 
   constructor() {
@@ -33,8 +33,8 @@ export class AppComponent {
   }
 
   reorderTodos() {
-    let completedTasks = this.todos.filter(todo => todo.isCompleted === true);
-    let pendingTasks = this.todos.filter(todo => todo.isCompleted === false);
+    const completedTasks = this.todos.filter(todo => todo.isCompleted === true);
+    const pendingTasks = this.todos.filter(todo => todo.isCompleted === false);
     this.todos = [];
     pendingTasks.forEach(task => this.todos.push(task));
     completedTasks.forEach(task => this.todos.push(task));
@@ -48,7 +48,7 @@ export class AppComponent {
   }
 
   deleteTodo(todoToBeRemoved: Todo) {
-    this.todos = this.todos.filter(todo => todo.id != todoToBeRemoved.id);
+    this.todos = this.todos.filter(todo => todo.id !== todoToBeRemoved.id);
   }
 
   getPendingTodos() {
