@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Todo } from './todo';
+import { TodoList } from './todo-list';
 
 @Component({
   selector: 'app-root',
@@ -8,51 +9,20 @@ import { Todo } from './todo';
 })
 export class AppComponent {
   title = 'TODO app';
-  newTodo: Todo = new Todo();
   lastId = 0;
-  todos: Todo[] = [];
+  todoLists: TodoList[] = [];
 
   constructor() {
   }
 
-  isInvalid() {
-    return this.newTodo.title.length === 0;
+  createNewTodoList() {
+    const todoList = {id: ++this.lastId, title: "Todo List", todos: []}
+    this.todoLists.push(todoList);
   }
 
-  addTodo() {
-    if (!this.newTodo.id) {
-      this.newTodo.id = ++this.lastId;
-    }
-    this.todos.push(this.newTodo);
-    this.reorderTodos();
-    this.newTodo = new Todo();
+ deleteList(todoListToBeRemoved: TodoList) {
+    console.log(todoListToBeRemoved);
+    this.todoLists = this.todoLists.filter(todoList => todoList.id !== todoListToBeRemoved.id);
+    console.log(this.todoLists);
   }
-
-  getTodoById(id: number): Todo {
-    return this.todos.filter(todo => todo.id === id).pop();
-  }
-
-  reorderTodos() {
-    const completedTasks = this.todos.filter(todo => todo.isCompleted === true);
-    const pendingTasks = this.todos.filter(todo => todo.isCompleted === false);
-    this.todos = [];
-    pendingTasks.forEach(task => this.todos.push(task));
-    completedTasks.forEach(task => this.todos.push(task));
-  }
-
-  changeStatus(todo: Todo) {
-    todo = this.getTodoById(todo.id);
-    todo.isCompleted = !todo.isCompleted;
-    this.reorderTodos();
-    return todo;
-  }
-
-  deleteTodo(todoToBeRemoved: Todo) {
-    this.todos = this.todos.filter(todo => todo.id !== todoToBeRemoved.id);
-  }
-
-  getPendingTodos() {
-    return this.todos.filter(todo => todo.isCompleted === false).length;
-  }
-
 }

@@ -1,0 +1,26 @@
+<div class="todo-list">
+  <header class="title">
+    <div>
+      <input class="todo-list-header" [(ngModel)]="todoList.title">
+    </div>
+    <input class="new-todo" placeholder="Enter a task" [(ngModel)]="newTodo.title">
+    <button [disabled]="isInvalid()" (click)="addTodo()">Add task</button>
+  </header>
+  <section class="main" *ngIf="todos">
+    <ul class="todo-list">
+      <div *ngFor="let todo of todos">
+        <div class="view">
+          <input class="toggle" type="checkbox" (click)="changeStatus(todo)" [checked]="todo.isCompleted">
+          <div class="todo-label">
+            <label>{{todo.title}}</label>
+          </div>
+          <button (click)="deleteTodo(todo)">Delete</button>
+        </div>
+      </div>
+    </ul>
+  </section>
+  <div>
+    <span
+      class="todo-count"><strong>{{getPendingTodos()}}</strong> Pending {{todos.length == 1 ? 'item' : 'items'}}</span>
+  </div>
+</div>

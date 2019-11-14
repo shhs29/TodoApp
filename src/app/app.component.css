@@ -6,38 +6,10 @@
 .todo-app {
   background-color: lightgreen;
   margin: 10px;
+  height: 500px;
 }
 
-.header {
-  padding: 10px;
-  width: 26%;
-  text-align: center;
-}
-
-.todo-count {
-  padding: 80px;
-}
-
-.new-todo {
-  height: 22px;
-  width: 200px;
-}
-
-button {
-  height: 22px;
-  margin-left: 10px;
-}
-
-::-webkit-input-placeholder {
-   text-align: center;
-   font-size: 16px;
-}
-
-.todo-label {
-  width: 150px;
-}
-
-.view {
-  width: 400px;
-  display: flex;
+.todo-list-container {
+  display: inline-block;
+  vertical-align: top;
 }

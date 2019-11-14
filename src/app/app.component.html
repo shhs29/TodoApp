@@ -3,28 +3,16 @@
     Welcome to {{ title }}!
   </h1>
 </div>
+<button (click)="createNewTodoList()" [disabled]="todoLists.length>=5">Add New Todo list</button>
+<p *ngIf="todoLists.length>=5">Delete a todo list. Cannot have more than 5 in progress todo list.</p>
 <section class="todo-app">
-  <header class="header">
-    <h1>Todo List 1</h1>
-    <input class="new-todo" placeholder="Enter a task" [(ngModel)]="newTodo.title">
-    <button [disabled]="isInvalid()" (click)="addTodo()">Add task</button>
-  </header>
-  <section class="main" *ngIf="todos">
-    <ul class="todo-list">
-      <div *ngFor="let todo of todos">
-        <div class="view">
-          <input class="toggle" type="checkbox" (click)="changeStatus(todo)" [checked]="todo.isCompleted">
-          <div class="todo-label">
-            <label>{{todo.title}}</label>
-          </div>
-          <button (click)="deleteTodo(todo)">Delete</button>
-        </div>
+  <section *ngIf="todoLists">
+    <div class="todo-list-container" *ngFor="let todoList of todoLists">
+      <app-todo-list [todoList]="todoList"></app-todo-list>
+      <div>
+        <button (click)="deleteList(todoList)">Delete list</button>
       </div>
-    </ul>
+    </div>
   </section>
-  <div>
-    <span
-      class="todo-count"><strong>{{getPendingTodos()}}</strong> Pending {{todos.length == 1 ? 'item' : 'items'}}</span>
-  </div>
 </section>
 

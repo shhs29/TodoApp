@@ -1,0 +1,32 @@
+.title {
+  padding: 10px;
+  text-align: center;
+}
+
+.new-todo {
+  height: 22px;
+  width: 200px;
+}
+
+button {
+  height: 22px;
+  margin-left: 10px;
+}
+
+::-webkit-input-placeholder {
+   text-align: center;
+   font-size: 16px;
+}
+
+.todo-label {
+  width: 150px;
+}
+
+.view {
+  width: 400px;
+  display: flex;
+}
+
+.todo-list-header {
+  margin: 5px;
+}
