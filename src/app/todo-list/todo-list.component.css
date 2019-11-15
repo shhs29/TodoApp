@@ -5,7 +5,7 @@
 
 .new-todo {
   height: 22px;
-  width: 200px;
+  width: 210px;
 }
 
 button {
@@ -29,4 +29,12 @@ button {
 
 .todo-list-header {
   margin: 5px;
+}
+
+.todo-list {
+  width: 400px;
+}
+
+.todo-count {
+  margin-left: 50px;
 }

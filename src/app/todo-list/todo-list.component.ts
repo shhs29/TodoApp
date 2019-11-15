@@ -34,10 +34,6 @@ export class TodoListComponent implements OnInit {
     this.newTodo = new Todo();
   }
 
-  getTodoById(id: number): Todo {
-    return this.todos.filter(todo => todo.id === id).pop();
-  }
-
   reorderTodos() {
     const completedTasks = this.todos.filter(todo => todo.isCompleted === true);
     const pendingTasks = this.todos.filter(todo => todo.isCompleted === false);
@@ -53,6 +49,11 @@ export class TodoListComponent implements OnInit {
     this.todoList = {id: this.todoList.id, title: this.todoList.title, todos: this.todos}
     return todo;
   }
+
+ getTodoById(id: number): Todo {
+    return this.todos.filter(todo => todo.id === id).pop();
+  }
+
 
   deleteTodo(todoToBeRemoved: Todo) {
     this.todos = this.todos.filter(todo => todo.id !== todoToBeRemoved.id);

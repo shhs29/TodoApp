@@ -6,10 +6,14 @@
 .todo-app {
   background-color: lightgreen;
   margin: 10px;
-  height: 500px;
+  height: 100%;
 }
 
 .todo-list-container {
   display: inline-block;
   vertical-align: top;
+}
+
+.delete-bttn {
+  margin-left: 50px;
 }

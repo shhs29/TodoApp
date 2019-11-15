@@ -10,7 +10,7 @@
     <div class="todo-list-container" *ngFor="let todoList of todoLists">
       <app-todo-list [todoList]="todoList"></app-todo-list>
       <div>
-        <button (click)="deleteList(todoList)">Delete list</button>
+        <button class="delete-bttn" (click)="deleteList(todoList)">Delete list</button>
       </div>
     </div>
   </section>
