@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
@@ -7,6 +7,9 @@ import {Todo} from './todo';
 import {TodoList} from './todo-list';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -20,16 +23,34 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
+  beforeEach(() => {
+  fixture = TestBed.createComponent(AppComponent);
+  component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 
   it(`should have as title 'TODO app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const component = fixture.componentInstance;
     expect(component.title).toEqual('TODO app');
+  });
+
+  it('should create new todo list', () => {
+    const todoList = {id: 1, title: 'Todo List', todos: []};
+    component.createNewTodoList();
+    expect(component.todoLists).toContain(todoList);
+  });
+
+  it('should delete a todo list', () => {
+    const todoList1 = {id: 1, title: 'Todo List', todos: []};
+    const todoList2 = {id: 2, title: 'Todo List', todos: []};
+    component.createNewTodoList();
+    component.createNewTodoList();
+    component.deleteList(todoList1)
+    expect(component.todoLists).not.toContain(todoList1);
+    expect(component.todoLists).toContain(todoList2);
   });
 
 });

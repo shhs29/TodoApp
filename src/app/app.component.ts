@@ -16,11 +16,11 @@ export class AppComponent {
   }
 
   createNewTodoList() {
-    const todoList = {id: ++this.lastId, title: "Todo List", todos: []}
+    const todoList = {id: ++this.lastId, title: 'Todo List', todos: []};
     this.todoLists.push(todoList);
   }
 
- deleteList(todoListToBeRemoved: TodoList) {
+  deleteList(todoListToBeRemoved: TodoList) {
     console.log(todoListToBeRemoved);
     this.todoLists = this.todoLists.filter(todoList => todoList.id !== todoListToBeRemoved.id);
     console.log(this.todoLists);

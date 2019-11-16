@@ -30,7 +30,7 @@ export class TodoListComponent implements OnInit {
     }
     this.todos.push(this.newTodo);
     this.reorderTodos();
-    this.todoList = {id: this.todoList.id, title: this.todoList.title, todos: this.todos}
+    this.todoList = {id: this.todoList.id, title: this.todoList.title, todos: this.todos};
     this.newTodo = new Todo();
   }
 
@@ -46,7 +46,7 @@ export class TodoListComponent implements OnInit {
     todo = this.getTodoById(todo.id);
     todo.isCompleted = !todo.isCompleted;
     this.reorderTodos();
-    this.todoList = {id: this.todoList.id, title: this.todoList.title, todos: this.todos}
+    this.todoList = {id: this.todoList.id, title: this.todoList.title, todos: this.todos};
     return todo;
   }
 
@@ -57,7 +57,7 @@ export class TodoListComponent implements OnInit {
 
   deleteTodo(todoToBeRemoved: Todo) {
     this.todos = this.todos.filter(todo => todo.id !== todoToBeRemoved.id);
-    this.todoList = {id: this.todoList.id, title: this.todoList.title, todos: this.todos}
+    this.todoList = {id: this.todoList.id, title: this.todoList.title, todos: this.todos};
   }
 
   getPendingTodos() {
