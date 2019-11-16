@@ -1,6 +1,6 @@
 # TodoApp
 
-A simple TODO app that lets you have multiple TODO list. <br>
+A simple TODO app that lets you have multiple TODO lists. <br>
 Simple yet efficient.
 
 ## Development server
